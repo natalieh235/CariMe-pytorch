@@ -12,7 +12,7 @@ from utils import str2bool
 from dataset import make_dataset
 from torch.utils.data import DataLoader
 
-os.environ['CUDA_VISIBLE_DEVICES'] = '0'
+# os.environ['CUDA_VISIBLE_DEVICES'] = '0'
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--data_root', type=str, default='data/WebCaricature_align_1.3_256')

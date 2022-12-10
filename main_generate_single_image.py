@@ -8,7 +8,7 @@ import numpy as np
 from networks import Warper, Styler
 from utils import load_img, unload_img
 
-os.environ['CUDA_VISIBLE_DEVICES'] = '1'
+# os.environ['CUDA_VISIBLE_DEVICES'] = '1'
 
 parser = argparse.ArgumentParser()
 

@@ -14,7 +14,7 @@ from dataset import make_dataset
 from networks import Warper, Styler
 from utils import unload_img, str2bool
 
-os.environ['CUDA_VISIBLE_DEVICES'] = '1'
+# os.environ['CUDA_VISIBLE_DEVICES'] = '1'
 
 parser = argparse.ArgumentParser()
 

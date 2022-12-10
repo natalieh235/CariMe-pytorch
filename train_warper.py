@@ -14,7 +14,7 @@ from networks import Warper, l1_loss, tv_loss
 from dataset import make_dataset
 from utils import prepare_sub_folder, weights_init, str2bool, write_image
 
-os.environ['CUDA_VISIBLE_DEVICES'] = '1'
+# os.environ['CUDA_VISIBLE_DEVICES'] = '1'
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--data_root', type=str, default='data/WebCaricature_align_1.3_256')
