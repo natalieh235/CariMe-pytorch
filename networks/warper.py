@@ -111,11 +111,12 @@ class WarpDecoder(nn.Module):
 class Warper(nn.Module):
     def __init__(self, args):
         super(Warper, self).__init__()
+        device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
         self.encoder_p = Encoder(latent_dim=args.embedding_dim)
         self.decoder_p = Decoder(dim=args.embedding_dim)
         self.encoder_w = WarpEncoder(input_dim=2, dim=64, downs=4, code_dim=args.warp_dim)
         self.decoder_w = WarpDecoder(latent_dim=(args.embedding_dim + args.warp_dim), ups=4, output_size=args.field_size)
-        self.const_field = make_init_field(args.img_size).cuda()
+        self.const_field = make_init_field(args.img_size).to(device)
         self.factor = args.img_size // args.field_size
 
     def encode_p(self, img_p):
