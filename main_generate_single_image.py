@@ -28,7 +28,8 @@ args = parser.parse_args()
 
 
 if __name__ == '__main__':
-    output_path = os.path.join(args.input_path[:-4] + '_gen.jpg')
+    # output_path = os.path.join(args.input_path[:-4] + '_gen.jpg')
+    output_path = args.input_path[:-4]
 
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     print('load warper: ', args.model_path_warper)
@@ -55,9 +56,11 @@ if __name__ == '__main__':
         s = torch.randn(img_p.size()[0], args.style_dim, 1, 1).cuda()
         img_style = styler(img_p, s)
         img_warp_style = styler(img_warp, s)
+        img = img_warp_style.squeeze().detach().cpu()
+        unload_img(img).save(output_path + '_gen_' + str(i) + '.jpg', 'jpeg')
 
         results.append(img_warp_style)
 
     results = torch.cat(results, dim=3)
     output = torch.cat([img_p, results], dim=3).squeeze().detach().cpu()
-    unload_img(output).save(output_path, 'jpeg')
+    # unload_img(output).save(output_path, 'jpeg')
