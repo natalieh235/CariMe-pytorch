@@ -12,7 +12,7 @@ from utils import load_img, unload_img
 
 parser = argparse.ArgumentParser()
 
-parser.add_argument('--input_path', type=str, default='images/Meg Ryan/P00015.jpg')
+parser.add_argument('--input_path', type=str, default='images/Meg_Ryan/P00015.jpg')
 parser.add_argument('--model_path_warper', type=str, default='results/warper/checkpoints/warper_00020000.pt')
 parser.add_argument('--model_path_styler', type=str, default='results/styler/checkpoints/gen_00200000.pt')
 
@@ -47,6 +47,7 @@ if __name__ == '__main__':
     num = args.generate_num
     img_p = load_img(args.input_path).to(device)
     results = []
+    print('results', len(results))
     for i in range(num):
         z = torch.randn(img_p.size()[0], args.warp_dim, 1, 1).cuda()
         img_warp, psmap, _ = warper(img_p, z, scale=args.scale)
