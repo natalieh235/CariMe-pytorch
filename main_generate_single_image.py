@@ -30,7 +30,7 @@ args = parser.parse_args()
 if __name__ == '__main__':
     output_path = os.path.join(args.input_path[:-4] + '_gen.jpg')
 
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     print('load warper: ', args.model_path_warper)
     print('load styler: ', args.model_path_styler)
 

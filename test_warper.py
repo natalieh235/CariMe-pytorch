@@ -44,7 +44,7 @@ if __name__ == '__main__':
     torch.manual_seed(SEED)
     torch.cuda.manual_seed(SEED)
 
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     model_path = os.path.join(args.name, 'checkpoints', args.model)
     print('load model: ', model_path)
     output_path = os.path.join(args.name, args.output_dir)

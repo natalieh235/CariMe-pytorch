@@ -64,7 +64,7 @@ if __name__ == '__main__':
     torch.manual_seed(SEED)
     torch.cuda.manual_seed(SEED)
 
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     print('load warper: ', args.model_path_warper)
     print('load styler: ', args.model_path_styler)
     output_path = args.output_path

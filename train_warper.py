@@ -54,7 +54,7 @@ if __name__ == '__main__':
     torch.manual_seed(SEED)
     torch.cuda.manual_seed(SEED)
 
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     checkpoint_dir, image_dir = prepare_sub_folder(args.output_path, delete_first=True)
 
     dataset = make_dataset(args)
